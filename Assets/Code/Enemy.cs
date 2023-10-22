@@ -66,7 +66,7 @@ namespace Code
             
             if (health <= 0)
             {
-                UI.Singleton.IncrementScore();
+                UI.IncrementScore();
                 Destroy(gameObject);
             }
         }

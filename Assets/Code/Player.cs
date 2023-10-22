@@ -55,12 +55,12 @@ namespace Code
         private void TakeDamage(int damage)
         {
             health -= damage;
-            UI.Singleton.SetHealth(health);
+            UI.SetHealth(health);
             
             if (health <= 0)
             {
-                UI.Singleton.SetHealth(0);
-                UI.Singleton.GameOver(false);
+                UI.SetHealth(0);
+                UI.GameOver(false);
                 Destroy(gameObject);
             }
         }

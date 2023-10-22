@@ -49,10 +49,18 @@ namespace Code
         }
         
         /// <summary>
+        /// Calls IncrementScoreInternal.
+        /// </summary>
+        public static void IncrementScore()
+        {
+            Singleton.IncrementScoreInternal();
+        }
+
+        /// <summary>
         /// Updates the score text when an enemy is killed. Also calls the GameOver method if the player has killed all 
         /// enemies.
         /// </summary>
-        public void IncrementScore()
+        private void IncrementScoreInternal()
         {
             _score++;
             scoreText.text = $"Score: {_score}";
@@ -64,20 +72,39 @@ namespace Code
         }
 
         /// <summary>
+        /// Calls SetHealthInternal and passes the specified health.
+        /// </summary>
+        /// <param name="health">The player's current health.</param>
+        public static void SetHealth(int health)
+        {
+            Singleton.SetHealthInternal(health);
+        }
+
+        /// <summary>
         /// Updates the health text to the specified value.
         /// </summary>
         /// <param name="health">The player's current health.</param>
-        public void SetHealth(int health)
+        private void SetHealthInternal(int health)
         {
             healthText.text = $"Health: {health}";
         }
         
         /// <summary>
+        /// Calls GameOverInternal and passes the specified win value.
+        /// </summary>
+        /// <param name="win">True if the player won (all enemies destroyed), false if the player lost (the player
+        /// died).</param>
+        public static void GameOver(bool win)
+        {
+            Singleton.GameOverInternal(win);
+        }
+
+        /// <summary>
         /// Updates the game over text to either "You Win!" or "You Lose!".
         /// </summary>
         /// <param name="win">True if the player won (all enemies destroyed), false if the player lost (the player
         /// died).</param>
-        public void GameOver(bool win)
+        private void GameOverInternal(bool win)
         {
             if (win)
             {
