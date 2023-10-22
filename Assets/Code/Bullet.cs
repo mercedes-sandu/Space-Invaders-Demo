@@ -48,12 +48,12 @@ namespace Code
         /// <param name="other">The object colliding with the bullet.</param>
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var bullet = other.GetComponent<Bullet>();
-            if (bullet != null)
+            var otherBullet = other.GetComponent<Bullet>();
+            if (otherBullet != null)
             {
-                if ((isEnemyBullet && !bullet.isEnemyBullet) || (!isEnemyBullet && bullet.isEnemyBullet))
+                if ((isEnemyBullet && !otherBullet.isEnemyBullet) || (!isEnemyBullet && otherBullet.isEnemyBullet))
                 {
-                    Destroy(bullet.gameObject);
+                    Destroy(otherBullet.gameObject);
                     Destroy(gameObject);
                 }
             }
